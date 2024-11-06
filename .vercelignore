@@ -4,7 +4,7 @@
 # Ignore database file
 db.sqlite3
 
-# Ignore media and data files
+# Ignore media, data, and large resource files
 media/
 analysis/data/
 *.csv
@@ -13,14 +13,10 @@ analysis/data/
 *.pyc
 __pycache__/
 
-# Ignore logs and environment files
+# Ignore logs, environment, and documentation files
 *.log
 .env
-
-# Documentation files
-README.md
-LICENSE.md
-Explanation.md
+*.md
 
 # Ignore Vercel configuration directory (if needed)
 .vercel
