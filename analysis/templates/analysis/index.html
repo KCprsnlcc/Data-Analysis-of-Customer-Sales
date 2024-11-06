@@ -1,0 +1,23 @@
+<!-- analysis/templates/analysis/index.html -->
+{% extends 'analysis/base.html' %}
+{% load static %}
+
+{% block title %}Welcome - Expert System Lab{% endblock %}
+
+{% block content %}
+<div class="text-center neumorphic-card animate__animated animate__fadeIn">
+    <h1 class="mb-4">Welcome to the Expert System Lab</h1>
+    <p class="lead mb-4">Perform data analysis with ease and precision.</p>
+    <a href="{% url 'analysis' %}" class="neumorphic-button btn btn-primary btn-lg">
+        <i class="fas fa-chart-line me-2"></i> Start Analysis
+    </a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script>
+    // GSAP Animation for the welcome message
+    gsap.from(".neumorphic-card", {duration: 2, y: -50, opacity: 0, ease: "bounce"});
+</script>
+{% endblock %}

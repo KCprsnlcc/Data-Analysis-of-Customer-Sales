@@ -1,0 +1,272 @@
+<!-- analysis/templates/analysis/analysis.html -->
+{% extends 'analysis/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Data Analysis - Expert System Lab{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Data Analysis</h2>
+
+<!-- Upload Form -->
+<div class="mb-5 neumorphic-card">
+    <h4 class="mb-3">Upload Your CSV File</h4>
+    <form method="post" enctype="multipart/form-data" class="form-inline">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.file.label_tag }}
+            {% render_field form.file class="neumorphic-input form-control" placeholder="Select CSV File" %}
+        </div>
+        <button type="submit" class="btn btn-success neumorphic-button">
+            <i class="fas fa-upload me-2"></i> Upload
+        </button>
+    </form>
+    {% if error %}
+        <div class="alert alert-danger mt-3 neumorphic-alert">{{ error }}</div>
+    {% endif %}
+</div>
+
+<!-- Search and Pagination Controls -->
+{% if preview %}
+    <div class="mb-3 neumorphic-card d-flex justify-content-between align-items-center">
+        <form method="get" class="d-flex">
+            <input type="text" name="search" class="form-control neumorphic-input me-2" placeholder="Search..." value="{{ search_query }}">
+            <button type="submit" class="btn btn-primary neumorphic-button">
+                <i class="fas fa-search me-2"></i> Search
+            </button>
+        </form>
+        <div>
+            <span>Page {{ data_page.number }} of {{ paginator.num_pages }}</span>
+        </div>
+    </div>
+{% endif %}
+
+<!-- Display Data with Pagination -->
+{% if preview %}
+    <div class="mb-5 neumorphic-card">
+        <h4 class="mb-3">1. Loading the Data</h4>
+        <div class="table-responsive animate__animated animate__fadeInUp">
+            {{ preview|safe }}
+        </div>
+
+        <!-- Pagination Controls -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center mt-3">
+                {% if data_page.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link neumorphic-button" href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link neumorphic-button" href="?page={{ data_page.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link neumorphic-button" href="#" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link neumorphic-button" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                    {% if num == data_page.number %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link neumorphic-button">{{ num }}</a>
+                        </li>
+                    {% elif num > data_page.number|add:'-3' and num < data_page.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link neumorphic-button" href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if data_page.has_next %}
+                    <li class="page-item">
+                        <a class="page-link neumorphic-button" href="?page={{ data_page.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link neumorphic-button" href="?page={{ paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link neumorphic-button" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link neumorphic-button" href="#" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}
+
+{% if data_types and missing_values %}
+    <!-- Existing Data Types and Missing Values Section -->
+    <div class="mb-5 neumorphic-card">
+        <h4 class="mb-3">2. Inspecting Data Types and Missing Values</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Data Types</h5>
+                <div class="table-responsive animate__animated animate__fadeInLeft">
+                    {{ data_types|safe }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5>Missing Values</h5>
+                <div class="table-responsive animate__animated animate__fadeInRight">
+                    {{ missing_values|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if category_spend and insights %}
+    <!-- 3. Exploratory Data Analysis (EDA) -->
+    <div class="mb-5 neumorphic-card">
+        <h4 class="mb-3">3. Exploratory Data Analysis (EDA)</h4>
+        <h5 class="mb-3">Amount Spent by Product Category</h5>
+        <div class="chart-container">
+            <canvas id="categorySpendChart"></canvas>
+        </div>
+    </div>
+{% endif %}
+
+{% if correlation_matrix or trend_line %}
+    <!-- Detailed EDA -->
+    <div class="mb-5 neumorphic-card">
+        <h4 class="mb-3">4. Detailed Exploratory Data Analysis (EDA)</h4>
+        {% if correlation_matrix %}
+            <h5>Correlation Matrix</h5>
+            <div class="text-center animate__animated animate__zoomIn">
+                <img src="{{ correlation_matrix }}" alt="Correlation Matrix" class="img-fluid neumorphic-image">
+            </div>
+        {% else %}
+            <p>No sufficient numeric data to display correlation matrix.</p>
+        {% endif %}
+
+        {% if trend_line %}
+            <h5 class="mt-4">Trend Line: Amount Spent Over Time</h5>
+            <div class="text-center animate__animated animate__zoomIn">
+                <img src="{{ trend_line }}" alt="Trend Line" class="img-fluid neumorphic-image">
+            </div>
+        {% else %}
+            <p>No purchase date data available to display trend line.</p>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if insights %}
+    <!-- Reporting Insights -->
+    <div class="mb-5 neumorphic-card">
+        <h4 class="mb-3">5. Reporting Insights</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3 neumorphic-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Customers</h5>
+                        <p class="card-text">{{ insights.total_customers }}</p>
+                        <div class="progress neumorphic-progress-bar-container">
+                            <div class="neumorphic-progress-bar" style="width: {{ insights.total_customers|floatformat:2 }}%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 neumorphic-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Average Age</h5>
+                        <p class="card-text">{{ insights.average_age|floatformat:2 }}</p>
+                        <div class="progress neumorphic-progress-bar-container">
+                            <div class="neumorphic-progress-bar" style="width: {{ insights.average_age|floatformat:2 }}%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3 neumorphic-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Amount Spent</h5>
+                        <p class="card-text">${{ insights.total_amount_spent|floatformat:2 }}</p>
+                        <div class="progress neumorphic-progress-bar-container">
+                            <div class="neumorphic-progress-bar" style="width: {{ insights.total_amount_spent|floatformat:2 }}%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 neumorphic-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Average Amount Spent</h5>
+                        <p class="card-text">${{ insights.average_amount_spent|floatformat:2 }}</p>
+                        <div class="progress neumorphic-progress-bar-container">
+                            <div class="neumorphic-progress-bar" style="width: {{ insights.average_amount_spent|floatformat:2 }}%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card neumorphic-card">
+            <div class="card-body">
+                <h5 class="card-title">Most Popular Category</h5>
+                <p class="card-text">{{ insights.most_popular_category }}</p>
+                <div class="progress neumorphic-progress-bar-container">
+                    <div class="neumorphic-progress-bar" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'export_excel' %}" class="btn btn-primary neumorphic-button me-2">
+                <i class="fas fa-file-excel me-2"></i> Export as Excel
+            </a>
+            <a href="{% url 'export_pdf' %}" class="btn btn-danger neumorphic-button">
+                <i class="fas fa-file-pdf me-2"></i> Export as PDF
+            </a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Chart.js
+        const ctx = document.getElementById('categorySpendChart').getContext('2d');
+        const chartData = {{ chart_data|safe }};
+        const categorySpendChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Amount Spent by Product Category'
+                    }
+                }
+            }
+        });
+
+        // GSAP Animations for Tables and Images
+        gsap.from(".table-responsive", {duration: 1.5, scale: 0.8, opacity: 0, ease: "power1.out", stagger: 0.3});
+        gsap.from("img.img-fluid.neumorphic-image", {duration: 1.5, scale: 0.8, opacity: 0, ease: "power1.out", delay: 0.5});
+        gsap.from(".list-group-item", {duration: 1, x: -100, opacity: 0, stagger: 0.2, ease: "back.out(1.7)"});
+    });
+</script>
+{% endblock %}

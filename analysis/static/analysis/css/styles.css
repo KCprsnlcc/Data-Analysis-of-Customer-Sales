@@ -1,0 +1,676 @@
+/* =========================================================
+    Neumorphic Design Stylesheet
+    ========================================================= */
+
+/* =========================================================
+    1. CSS Variables (Color Palette)
+    ========================================================= */
+    :root {
+        /* Primary Colors */
+        --accent-color: #0e2326; /* Dark Teal */
+        --accent-light: #689e4b; /* Light Green */
+    
+        /* Background Colors */
+        --background-color: #ffffff; /* White */
+        --neumorphic-background: #e0e5ec; /* Light Gray for Neumorphism */
+    
+        /* Shadows */
+        --box-shadow: 8px 8px 15px rgba(14, 35, 38, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
+        --inset-box-shadow: inset 8px 8px 15px rgba(14, 35, 38, 0.1), inset -8px -8px 15px rgba(255, 255, 255, 0.7);
+    
+        /* Alert Colors */
+        --alert-success-bg: #d4edda;
+        --alert-success-text: #155724;
+        --alert-danger-bg: #f8d7da;
+        --alert-danger-text: #721c24;
+    
+        /* Button Colors */
+        --button-primary-bg: var(--accent-color);
+        --button-primary-text: #ffffff;
+        --button-primary-hover-bg: var(--accent-light);
+        --button-danger-bg: #dc3545;
+        --button-danger-hover-bg: #c82333;
+        --button-success-bg: #28a745;
+        --button-success-hover-bg: #218838;
+    
+        /* List Group Colors */
+        --list-group-bg: var(--background-color);
+        --list-group-hover-bg: var(--accent-light);
+    
+        /* Image Shadow */
+        --image-shadow: var(--box-shadow);
+    
+        /* Tooltip Colors */
+        --tooltip-bg: var(--background-color);
+        --tooltip-text: var(--accent-color);
+    
+        /* Neumorphic Alert Colors */
+        --neumorphic-alert-bg: #f1f1f1;
+        --neumorphic-alert-text: #555555;
+    }
+    
+    /* =========================================================
+        2. Base Styles
+        ========================================================= */
+    body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+        color: var(--accent-color);
+        /* Optional: Apply a global box-sizing rule */
+        box-sizing: border-box;
+    }
+    
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
+    
+    /* =========================================================
+        3. Neumorphic Card Component
+        ========================================================= */
+    .neumorphic-card {
+        background-color: var(--background-color);
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        padding: 20px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 12px 12px 20px rgba(14, 35, 38, 0.1), -12px -12px 20px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* =========================================================
+        4. Neumorphic Button
+        ========================================================= */
+    .neumorphic-button {
+        background-color: var(--button-primary-bg);
+        color: var(--button-primary-text);
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        box-shadow: var(--box-shadow);
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    
+    .neumorphic-button:hover {
+        background-color: var(--button-primary-hover-bg);
+        box-shadow: 8px 8px 15px rgba(14, 35, 38, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
+        transform: translateY(-3px);
+    }
+    
+    .neumorphic-button:active {
+        box-shadow: var(--inset-box-shadow);
+        transform: translateY(0);
+    }
+    
+    .btn-danger.neumorphic-button {
+        background-color: var(--button-danger-bg);
+        color: #ffffff;
+    }
+    
+    .btn-danger.neumorphic-button:hover {
+        background-color: var(--button-danger-hover-bg);
+    }
+    
+    .btn-success.neumorphic-button {
+        background-color: var(--button-success-bg);
+        color: #ffffff;
+    }
+    
+    .btn-success.neumorphic-button:hover {
+        background-color: var(--button-success-hover-bg);
+    }
+    
+    /* =========================================================
+        5. Neumorphic Input
+        ========================================================= */
+    .neumorphic-input {
+        background-color: var(--background-color);
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        box-shadow: var(--inset-box-shadow);
+        font-size: 14px;
+        color: #555555;
+        transition: box-shadow 0.3s ease, border 0.3s ease;
+    }
+    
+    .neumorphic-input:focus {
+        outline: none;
+        box-shadow: var(--box-shadow);
+        border: 1px solid var(--accent-light);
+    }
+    
+    /* =========================================================
+        6. Neumorphic Alert
+        ========================================================= */
+    .neumorphic-alert {
+        background-color: var(--neumorphic-alert-bg);
+        color: var(--neumorphic-alert-text);
+        border-radius: 10px;
+        box-shadow: var(--inset-box-shadow);
+        padding: 15px 20px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-alert:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow);
+    }
+    
+    /* =========================================================
+        7. Neumorphic Image
+        ========================================================= */
+    .neumorphic-image {
+        border-radius: 10px;
+        box-shadow: var(--image-shadow);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-image:hover {
+        transform: scale(1.02);
+        box-shadow: 12px 12px 20px rgba(14, 35, 38, 0.1), -12px -12px 20px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* =========================================================
+        8. Neumorphic List Group
+        ========================================================= */
+    .neumorphic-list-group {
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+    }
+    
+    .neumorphic-list-group .list-group-item {
+        border: none;
+        background-color: var(--background-color);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-list-group .list-group-item:hover {
+        background-color: var(--list-group-hover-bg);
+        transform: translateY(-2px);
+    }
+    
+    /* =========================================================
+        9. Neumorphic Tooltip
+        ========================================================= */
+    .pilarease-admin-tooltip,
+    .pilarease-admin-tooltip-top {
+        position: absolute;
+        background-color: var(--tooltip-bg);
+        color: var(--tooltip-text);
+        padding: 8px 12px;
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        font-size: 14px;
+        z-index: 1000;
+        max-width: 400px;
+        min-width: 150px;
+        word-wrap: break-word;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        white-space: normal;
+    }
+    
+    .pilarease-admin-tooltip::after,
+    .pilarease-admin-tooltip-top::after {
+        content: "";
+        position: absolute;
+        border: 6px solid transparent;
+    }
+    
+    .pilarease-admin-tooltip::after {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top-color: var(--tooltip-bg);
+    }
+    
+    .pilarease-admin-tooltip-top::after {
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom-color: var(--tooltip-bg);
+    }
+    
+    .pilarease-admin-info-icon:hover + .pilarease-admin-tooltip,
+    .pilarease-admin-info-icon:hover + .pilarease-admin-tooltip-top {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    /* =========================================================
+        10. Neumorphic Tag
+        ========================================================= */
+    .neumorphic-tag {
+        display: inline-block;
+        background-color: var(--keyword-tag-background);
+        color: var(--background-color);
+        padding: 4px 8px;
+        border-radius: 12px;
+        box-shadow: var(--box-shadow);
+        font-size: 12px;
+        margin: 2px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 8px 8px 15px rgba(14, 35, 38, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* =========================================================
+        11. Neumorphic Pagination
+        ========================================================= */
+    .neumorphic-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .neumorphic-pagination .neumorphic-button {
+        margin: 0 5px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    
+    .neumorphic-pagination .current {
+        background-color: var(--accent-light);
+        color: #ffffff;
+        font-weight: bold;
+    }
+    
+    .neumorphic-pagination .neumorphic-button:hover {
+        background-color: var(--button-primary-hover-bg);
+        transform: translateY(-2px);
+    }
+    
+    /* =========================================================
+        12. Neumorphic Progress Bar
+        ========================================================= */
+    .neumorphic-progress-bar-container {
+        position: relative;
+        width: 100%;
+        background-color: var(--neumorphic-background);
+        border-radius: 10px;
+        box-shadow: var(--inset-box-shadow);
+        height: 20px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-progress-bar-container:hover {
+        box-shadow: var(--box-shadow);
+        transform: translateY(-2px);
+    }
+    
+    .neumorphic-progress-bar {
+        height: 100%;
+        background-color: var(--accent-light);
+        border-radius: 10px 0 0 10px;
+        width: 0%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .neumorphic-progress-tooltip {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--tooltip-bg);
+        color: var(--tooltip-text);
+        padding: 5px 10px;
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+    
+    .neumorphic-progress-bar-container:hover .neumorphic-progress-tooltip {
+        opacity: 1;
+    }
+    
+    /* =========================================================
+        13. Neumorphic Modal
+        ========================================================= */
+    .neumorphic-modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(14, 35, 38, 0.5);
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .neumorphic-modal-content {
+        background-color: var(--background-color);
+        margin: auto;
+        padding: 20px;
+        border: none;
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+        animation: slideDown 0.5s ease;
+    }
+    
+    .neumorphic-modal-content .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        color: var(--accent-color);
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-modal-content .close:hover,
+    .neumorphic-modal-content .close:focus {
+        color: var(--accent-light);
+        transform: rotate(90deg);
+    }
+    
+    /* =========================================================
+        14. Animations
+        ========================================================= */
+    @keyframes popIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes popOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* =========================================================
+        15. Responsive Design
+        ========================================================= */
+    @media (max-width: 768px) {
+        .neumorphic-card {
+            padding: 15px;
+            border-radius: 10px;
+        }
+    
+        .neumorphic-button {
+            width: 100%;
+            padding: 12px 0;
+        }
+    
+        .neumorphic-input {
+            width: 100%;
+        }
+    
+        .report-container {
+            width: 95%;
+        }
+    
+        .neumorphic-modal-content {
+            width: 90%;
+        }
+    
+        .neumorphic-progress-bar-container {
+            height: 15px;
+        }
+    
+        .neumorphic-progress-tooltip {
+            top: -25px;
+            font-size: 11px;
+        }
+    
+        .neumorphic-tag {
+            font-size: 11px;
+        }
+    
+        .neumorphic-list-group .list-group-item {
+            font-size: 13px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .neumorphic-button {
+            font-size: 12px;
+            padding: 10px 0;
+        }
+    
+        .neumorphic-input {
+            font-size: 12px;
+        }
+    
+        .neumorphic-list-group .list-group-item {
+            font-size: 12px;
+        }
+    
+        .neumorphic-tag {
+            font-size: 10px;
+        }
+    
+        .neumorphic-progress-bar-container {
+            height: 10px;
+        }
+    
+        .neumorphic-progress-tooltip {
+            top: -20px;
+            font-size: 10px;
+        }
+    
+        .neumorphic-modal-content {
+            width: 95%;
+        }
+    }
+    
+    /* =========================================================
+        16. Additional Styles
+        ========================================================= */
+    
+    /* Elevated Hover Effect for Various Elements */
+    .neumorphic-card,
+    .neumorphic-alert,
+    .neumorphic-list-group,
+    .neumorphic-pagination .neumorphic-button,
+    .neumorphic-tag {
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .neumorphic-card:hover,
+    .neumorphic-alert:hover,
+    .neumorphic-list-group:hover,
+    .neumorphic-pagination .neumorphic-button:hover,
+    .neumorphic-tag:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(14, 35, 38, 0.2);
+    }
+    
+    /* Table Styles */
+    .table-responsive .table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    .table-responsive .table th,
+    .table-responsive .table td {
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .table-responsive .table th {
+        background-color: var(--accent-color);
+        color: #ffffff;
+    }
+    
+    .table-responsive .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    
+    .table-responsive .table tr:hover {
+        background-color: rgba(104, 158, 75, 0.1);
+    }
+    
+    /* Chart Container */
+    .chart-container {
+        position: relative;
+        height: 400px;
+        width: 100%;
+    }
+    
+    /* Neumorphic Image Hover Effect */
+    .img-fluid.neumorphic-image {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .img-fluid.neumorphic-image:hover {
+        transform: scale(1.02);
+        box-shadow: 12px 12px 20px rgba(14, 35, 38, 0.1), -12px -12px 20px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* =========================================================
+        17. Font Awesome Icons (Ensure Integration)
+        ========================================================= */
+    /* If you're using Font Awesome icons, ensure they are properly styled */
+    .fas {
+        margin-right: 5px;
+    }
+    
+    /* =========================================================
+        18. Neumorphic Modal Animations
+        ========================================================= */
+    .animate__zoomIn {
+        animation: popIn 0.5s forwards;
+    }
+    
+    .animate__zoomOut {
+        animation: popOut 0.5s forwards;
+    }
+    
+    /* =========================================================
+        19. Additional Element Styles
+        ========================================================= */
+    
+    /* Neumorphic Chart */
+    .canvas-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        background-color: var(--background-color);
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        padding: 20px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .canvas-container:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(14, 35, 38, 0.2);
+    }
+    
+    /* Neumorphic Table Image */
+    .report-image {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: var(--image-shadow);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    .report-image:hover {
+        transform: scale(1.02);
+        box-shadow: 12px 12px 20px rgba(14, 35, 38, 0.1), -12px -12px 20px rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Neumorphic Alerts in Report */
+    .report-alert {
+        background-color: var(--alert-success-bg);
+        color: var(--alert-success-text);
+        padding: 10px 15px;
+        border-radius: 8px;
+        box-shadow: var(--inset-box-shadow);
+        margin-bottom: 15px;
+    }
+    
+    /* =========================================================
+        20. Scrollbar Styles (Optional Enhancements)
+        ========================================================= */
+    /* For WebKit Browsers (Chrome, Safari) */
+    body::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    body::-webkit-scrollbar-track {
+        background: var(--neumorphic-background);
+    }
+    
+    body::-webkit-scrollbar-thumb {
+        background-color: var(--accent-light);
+        border-radius: 10px;
+        border: 2px solid var(--neumorphic-background);
+    }
+    
+    /* For Firefox */
+    body {
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-light) var(--neumorphic-background);
+    }
+    
+    /* =========================================================
+        End of Neumorphic Design Stylesheet
+        ========================================================= */
+    

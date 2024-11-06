@@ -1,0 +1,101 @@
+Customer_ID,Name,Age,Gender,Purchase_Date,Product_Category,Amount_Spent,Age_Group,Loyalty_Label
+1,Catherine Lucero,33.0,F,2024-02-29 00:00:00,Clothing,468.91,26-35,Regular
+2,Zoe Castillo,59.0,M,2024-05-25 00:00:00,Books,304.95,46-60,Regular
+3,Mallory Valenzuela,24.0,F,2024-01-10 00:00:00,Electronics,64.26,18-25,Regular
+4,Charles Bradford,18.0,F,2024-04-04 00:00:00,Electronics,346.47,18-25,Regular
+5,Scott Mata,37.0,F,2024-04-04 00:00:00,Home Appliances,224.82,36-45,Regular
+6,Wayne Taylor,57.0,M,2024-06-13 00:00:00,Books,199.0,46-60,Regular
+7,Jeffrey Miller,29.0,F,2024-09-09 00:00:00,Electronics,177.57,26-35,Regular
+8,Joe Golden,18.0,F,2024-06-06 00:00:00,Clothing,,18-25,Regular
+9,Matthew Moody,58.0,F,2024-01-10 00:00:00,Home Appliances,276.17,46-60,Regular
+10,Maria Wilson,23.0,M,2024-06-06 00:00:00,Home Appliances,372.56,18-25,Regular
+11,Michael Edwards,44.0,F,2024-08-27 00:00:00,Clothing,356.36,36-45,Regular
+12,Betty Cisneros,48.0,F,2024-01-10 00:00:00,Home Appliances,398.78,46-60,Regular
+13,Emily Russell,31.0,F,2024-06-21 00:00:00,Clothing,483.27,26-35,Regular
+14,Christine Callahan,51.0,F,2024-07-05 00:00:00,Clothing,428.78,46-60,Regular
+15,Daniel Olson,41.0,F,2024-01-10 00:00:00,Electronics,355.03,36-45,Regular
+16,Ronald Brown,62.0,F,2024-10-10 00:00:00,Books,288.98,60+,Regular
+17,Antonio Robinson,49.0,F,2023-12-10 00:00:00,Books,138.99,46-60,Regular
+18,Carolyn Kirby,18.0,M,2024-02-03 00:00:00,Clothing,186.7,18-25,Regular
+19,Derrick Brown,35.0,F,2023-12-21 00:00:00,Books,215.95,36-45,Regular
+20,Blake Ortiz,38.0,F,2024-05-29 00:00:00,Books,232.74,36-45,Regular
+21,Jade Giles,23.0,F,2023-11-25 00:00:00,Books,353.86,18-25,Regular
+22,Andrew Fry,34.0,F,2024-01-10 00:00:00,Books,356.23,26-35,Regular
+23,Harold Huffman,30.0,M,2024-07-11 00:00:00,Home Appliances,62.96,26-35,Regular
+24,Rebecca Mendoza DVM,53.0,F,2024-01-10 00:00:00,Clothing,,46-60,Regular
+25,Andrea Hull,21.0,F,2024-07-10 00:00:00,Books,280.84,18-25,Regular
+26,Sherry Mason,55.0,M,2024-03-10 00:00:00,Home Appliances,491.29,46-60,Regular
+27,Samuel Cochran,32.0,M,2024-01-04 00:00:00,Home Appliances,355.77,26-35,Regular
+28,Lauren Williams,62.0,F,2024-05-01 00:00:00,Electronics,365.2,60+,Regular
+29,Lucas Little,53.0,M,2023-11-01 00:00:00,Clothing,92.81,46-60,Regular
+30,Terry Thompson,36.0,F,2024-03-20 00:00:00,Books,214.44,36-45,Regular
+31,Chad Griffin,43.0,M,2024-06-10 00:00:00,Electronics,419.19,36-45,Regular
+32,Robin Bautista,47.0,F,2024-08-07 00:00:00,Electronics,75.86,46-60,Regular
+33,Hannah Hughes,22.0,F,2023-12-07 00:00:00,Books,482.27,18-25,Regular
+34,Janet Burns,48.0,F,2024-01-10 00:00:00,Electronics,301.61,46-60,Regular
+35,Chad Murphy,54.0,F,2024-04-04 00:00:00,Books,147.25,46-60,Regular
+36,Bruce Williams,56.0,F,2024-05-12 00:00:00,Home Appliances,406.27,46-60,Regular
+37,Ruth Lewis,53.0,M,2024-02-08 00:00:00,Home Appliances,440.08,46-60,Regular
+38,Carrie Silva,31.0,M,2023-10-31 00:00:00,Electronics,475.55,26-35,Regular
+39,Michelle White,21.0,M,2024-10-03 00:00:00,Home Appliances,483.54,18-25,Regular
+40,Derek Howard,35.0,M,2024-02-10 00:00:00,Home Appliances,279.65,36-45,Regular
+41,Kaitlyn Tucker,24.0,F,2023-12-18 00:00:00,Books,196.08,18-25,Regular
+42,Edward Hernandez,55.0,M,2024-09-22 00:00:00,Electronics,479.26,46-60,Regular
+43,Barry Webb,32.0,M,2024-02-20 00:00:00,Books,127.31,26-35,Regular
+44,Justin Moore,28.0,F,2024-01-30 00:00:00,Clothing,177.75,26-35,Regular
+45,Stacy Brown,18.0,F,2024-08-17 00:00:00,Electronics,499.45,18-25,Regular
+46,Shannon Sawyer,67.0,F,2023-12-12 00:00:00,Home Appliances,289.28,60+,Regular
+47,Stephanie Holt,33.0,F,2024-07-08 00:00:00,Books,158.04,26-35,Regular
+48,Willie Lozano,58.0,M,2024-01-10 00:00:00,Clothing,487.13,46-60,Regular
+49,Tanya Murphy,60.0,F,2024-01-10 00:00:00,Books,497.11,60+,Regular
+50,Loretta Lawrence,27.0,F,2024-03-14 00:00:00,Clothing,497.87,26-35,Regular
+51,Adrian Campbell,56.0,M,2024-05-06 00:00:00,Clothing,443.31,46-60,Regular
+52,William Wilkins,47.0,F,2024-05-20 00:00:00,Books,65.19,46-60,Regular
+53,Douglas Hampton,45.0,M,2023-11-16 00:00:00,Books,453.13,46-60,Regular
+54,Tammy Newman,66.0,F,2024-01-10 00:00:00,Home Appliances,443.84,60+,Regular
+55,Craig Johnson,52.0,F,2024-01-24 00:00:00,Home Appliances,298.34,46-60,Regular
+56,Mary Mcguire,69.0,F,2023-11-20 00:00:00,Books,364.48,60+,Regular
+57,Kathryn Jones,18.0,F,2024-01-25 00:00:00,Electronics,145.57,18-25,Regular
+58,Max Skinner Jr.,26.0,F,2024-07-02 00:00:00,Clothing,262.41,26-35,Regular
+59,Alexandra Santiago,46.0,M,2024-01-10 00:00:00,Electronics,387.5,46-60,Regular
+60,John Dickson,67.0,M,2024-08-11 00:00:00,Electronics,207.31,60+,Regular
+61,Stephen Giles,53.0,F,2024-05-27,Clothing,833.56,46-60,Loyal
+61,Cassandra Randolph,19.0,F,2024-05-06,Furniture,484.47,18-25,Regular
+61,Denise Ramirez,61.0,F,2024-06-18,Clothing,751.5,60+,Loyal
+61,Jennifer Dillon,23.0,F,2024-05-14,Clothing,639.77,18-25,Loyal
+61,Kevin Garcia,75.0,F,2024-02-02,Furniture,737.65,60+,Loyal
+61,Kristy Allen,71.0,M,2024-07-14,Home Appliances,74.59,60+,Regular
+61,Sarah Wilson,36.0,F,2024-08-24,Furniture,260.55,36-45,Regular
+61,Joshua Owens,29.0,F,2024-01-11,Home Appliances,881.06,26-35,Loyal
+61,Benjamin Morales,19.0,F,2024-08-17,Electronics,810.57,18-25,Loyal
+61,Jeremy White,71.0,F,2024-10-27,Furniture,884.37,60+,Loyal
+61,Karen Flores,26.0,F,2024-01-07,Clothing,802.74,26-35,Loyal
+61,Victoria Lyons,30.0,F,2024-02-10,Groceries,571.65,26-35,Loyal
+61,Mrs. Nicole Williamson,45.0,M,2024-08-26,Clothing,139.71,46-60,Regular
+61,Daniel Lopez,75.0,M,2024-05-27,Groceries,305.81,60+,Regular
+61,Lauren Mueller,57.0,M,2024-03-23,Electronics,314.47,46-60,Regular
+61,Matthew Gonzalez,18.0,F,2024-01-11,Home Appliances,57.26,18-25,Regular
+61,Joshua Reeves,57.0,M,2024-10-05,Electronics,921.27,46-60,Loyal
+61,Katrina Thompson,78.0,M,2024-01-03,Clothing,758.35,60+,Loyal
+61,Michelle Davis,32.0,F,2024-04-30,Furniture,181.83,26-35,Regular
+61,Wesley Snyder,27.0,M,2024-01-25,Clothing,711.41,26-35,Loyal
+61,Robert Wright,66.0,M,2024-05-08,Groceries,617.39,60+,Loyal
+61,Linda Hudson MD,68.0,M,2024-04-14,Groceries,501.62,60+,Loyal
+61,Joseph Hudson,50.0,M,2024-07-16,Groceries,400.17,46-60,Regular
+61,Carolyn Bruce,54.0,M,2024-03-26,Furniture,497.25,46-60,Regular
+61,Tyler Love,70.0,F,2024-03-01,Home Appliances,999.56,60+,Loyal
+61,Hector Burke,35.0,F,2024-03-19,Clothing,360.12,36-45,Regular
+61,Jerry Fuentes,20.0,M,2024-10-17,Clothing,86.92,18-25,Regular
+61,William Hoffman,40.0,F,2024-03-04,Groceries,765.57,36-45,Loyal
+61,Michael Snyder,54.0,F,2024-05-08,Electronics,582.99,46-60,Loyal
+61,Stephen Thomas,62.0,F,2024-06-01,Groceries,917.69,60+,Loyal
+61,Jacqueline Williams,35.0,M,2024-08-30,Groceries,360.5,36-45,Regular
+61,Rebecca Mendoza,56.0,F,2024-09-07,Clothing,115.91,46-60,Regular
+61,Eugene Neal,53.0,M,2024-07-10,Electronics,333.74,46-60,Regular
+61,Philip Ramirez,40.0,M,2024-03-06,Electronics,482.13,36-45,Regular
+61,Daniel Smith,51.0,F,2024-08-10,Electronics,521.24,46-60,Loyal
+61,Noah Kramer,70.0,F,2024-04-16,Clothing,804.29,60+,Loyal
+61,Nicholas Andrews,79.0,F,2024-06-04,Furniture,776.55,60+,Loyal
+61,Tina Navarro,59.0,M,2024-05-26,Clothing,469.45,46-60,Regular
+61,Jean Crawford,55.0,F,2024-09-20,Electronics,674.31,46-60,Loyal
+61,Victoria Simpson,61.0,F,2024-02-20,Home Appliances,756.61,60+,Loyal

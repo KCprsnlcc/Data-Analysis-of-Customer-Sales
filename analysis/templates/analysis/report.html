@@ -1,0 +1,110 @@
+<!-- analysis/templates/analysis/report.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Analysis Report</title>
+    <!-- Custom Neumorphic CSS for Reports -->
+    <link rel="stylesheet" href="{% static 'analysis/css/report_styles.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="report-container neumorphic-card">
+        <h1 class="mb-4">Data Analysis Report</h1>
+        <p><strong>Date:</strong> {{ insights.report_date }}</p>
+
+        <!-- Data Preview -->
+        <section class="mb-5">
+            <h2>1. Data Preview</h2>
+            <div class="table-responsive">
+                {{ preview|safe }}
+            </div>
+        </section>
+
+        <!-- Data Types -->
+        <section class="mb-5">
+            <h2>2. Data Types</h2>
+            <div class="table-responsive">
+                {{ data_types|safe }}
+            </div>
+        </section>
+
+        <!-- Missing Values -->
+        <section class="mb-5">
+            <h2>3. Missing Values</h2>
+            <div class="table-responsive">
+                {{ missing_values|safe }}
+            </div>
+        </section>
+
+        <!-- Interactive Visualization -->
+        <section class="mb-5">
+            <h2>4. Amount Spent by Product Category</h2>
+            <div class="chart-container">
+                <canvas id="categorySpendChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Correlation Matrix -->
+        <section class="mb-5">
+            <h2>5. Correlation Matrix</h2>
+            {% if correlation_matrix %}
+                <img src="{{ correlation_matrix }}" alt="Correlation Matrix" class="report-image neumorphic-image">
+            {% else %}
+                <p>No correlation matrix available.</p>
+            {% endif %}
+        </section>
+
+        <!-- Trend Line -->
+        <section class="mb-5">
+            <h2>6. Trend Line: Amount Spent Over Time</h2>
+            {% if trend_line %}
+                <img src="{{ trend_line }}" alt="Trend Line" class="report-image neumorphic-image">
+            {% else %}
+                <p>No trend line available.</p>
+            {% endif %}
+        </section>
+
+        <!-- Insights -->
+        <section class="mb-5">
+            <h2>7. Insights</h2>
+            <ul class="list-group neumorphic-list-group">
+                <li class="list-group-item">Total Customers: {{ insights.total_customers }}</li>
+                <li class="list-group-item">Average Age: {{ insights.average_age|floatformat:2 }}</li>
+                <li class="list-group-item">Total Amount Spent: ${{ insights.total_amount_spent|floatformat:2 }}</li>
+                <li class="list-group-item">Average Amount Spent: ${{ insights.average_amount_spent|floatformat:2 }}</li>
+                <li class="list-group-item">Most Popular Category: {{ insights.most_popular_category }}</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Chart.js for the report
+            const ctx = document.getElementById('categorySpendChart').getContext('2d');
+            const chartData = {{ chart_data|safe }};
+            const categorySpendChart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Amount Spent by Product Category'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    
