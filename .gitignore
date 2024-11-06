@@ -1,6 +1,15 @@
+# Ignore Python virtual environment
 .venv/
+
+# Ignore Python bytecode
 *.pyc
 __pycache__/
+
+# Log files
 *.log
+
+# Environment variables
 .env
+
+# Vercel config and cache
 .vercel

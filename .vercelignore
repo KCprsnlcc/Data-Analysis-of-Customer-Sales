@@ -1,0 +1,26 @@
+# Ignore virtual environment
+.venv/
+
+# Ignore database file
+db.sqlite3
+
+# Ignore media and data files
+media/
+analysis/data/
+*.csv
+
+# Ignore cached files and bytecode
+*.pyc
+__pycache__/
+
+# Ignore logs and environment files
+*.log
+.env
+
+# Documentation files
+README.md
+LICENSE.md
+Explanation.md
+
+# Ignore Vercel configuration directory (if needed)
+.vercel
