@@ -127,7 +127,7 @@ def analysis_view(request):
         # 4. Data Cleaning and Transformation
         # Convert Purchase_Date to datetime
         if 'Purchase_Date' in df.columns:
-            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], format='%d/%m/%Y', errors='coerce')
+            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], errors='coerce')
         # Drop duplicates
         df.drop_duplicates(inplace=True)
         # Normalize Amount_Spent
@@ -281,7 +281,7 @@ def export_excel(request):
         # 4. Data Cleaning and Transformation
         # Convert Purchase_Date to datetime
         if 'Purchase_Date' in df.columns:
-            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], format='%d/%m/%Y', errors='coerce')
+            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], errors='coerce')
         # Drop duplicates
         df.drop_duplicates(inplace=True)
         # Normalize Amount_Spent
@@ -393,7 +393,7 @@ def export_pdf(request):
         # 4. Data Cleaning and Transformation
         # Convert Purchase_Date to datetime
         if 'Purchase_Date' in df.columns:
-            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], format='%d/%m/%Y', errors='coerce')
+            df['Purchase_Date'] = pd.to_datetime(df['Purchase_Date'], errors='coerce')
         # Drop duplicates
         df.drop_duplicates(inplace=True)
         # Normalize Amount_Spent
