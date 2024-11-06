@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Application definition
 
